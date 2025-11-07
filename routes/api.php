@@ -8,16 +8,11 @@ use App\Http\Controllers\Api\UserController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/login', [AuthController::class, 'login']);
 Route::options('/login', function () {
     return response()->json([], 204);
-});
 
-Route::post('/login', function (Request $request) {
-    return response()->json(['ok' => true]);
-
-});
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('/user', UserController::class);
