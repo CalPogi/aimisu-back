@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             // Laravel 12 default API middleware stack
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\LogOptionsRequests::class,
         ],
     ];
 
