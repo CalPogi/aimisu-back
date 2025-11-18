@@ -20,8 +20,10 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://localhost:5173',  // Your local dev frontend
-        'https://aimisu-front.vercel.app', // Your Vercel deployed frontend
+        'http://localhost:5173',
+        'http://localhost:5174', // Your local dev frontend
+        'https://aimisu-front.vercel.app',
+        'http://localhost:58642'// Your Vercel deployed frontend
     ],
 
     'allowed_origins_patterns' => [],
