@@ -10,7 +10,7 @@ class CheckOrgAdmin
     public function handle(Request $request, Closure $next)
     {
         if ($request->user()->role !== 'org_admin' && $request->user()->role !== 'admin') {
-            return response()->json(['message' => 'Unauthorized - org-admin only'], 403);
+            return response()->json(['message' => 'Unauthorized - Org Admin only'], 403);
         }
 
         return $next($request);

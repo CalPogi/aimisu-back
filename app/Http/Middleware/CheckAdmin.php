@@ -10,7 +10,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if ($request->user()->role !== 'admin') {
-            return response()->json(['message' => 'Unauthorized - admin only'], 403);
+            return response()->json(['message' => 'Unauthorized - Admin only'], 403);
         }
 
         return $next($request);
