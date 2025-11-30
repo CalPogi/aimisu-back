@@ -21,7 +21,6 @@ class LocationController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'category' => 'required|string',
-            'capacity' => 'nullable|integer',
             'description' => 'nullable|string',
             'amenities' => 'nullable|array',
         ]);
@@ -41,7 +40,6 @@ class LocationController extends Controller
             'latitude' => 'sometimes|numeric',
             'longitude' => 'sometimes|numeric',
             'category' => 'sometimes|string',
-            'capacity' => 'nullable|integer',
             'description' => 'nullable|string',
             'amenities' => 'nullable|array',
         ]);

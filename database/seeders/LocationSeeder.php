@@ -16,7 +16,7 @@ class LocationSeeder extends Seeder
                 'latitude' => 16.6916,
                 'longitude' => 121.6774,
                 'category' => 'auditorium',
-                'capacity' => 1000,
+
             ],
             [
                 'name' => 'Sports Field',
@@ -24,7 +24,7 @@ class LocationSeeder extends Seeder
                 'latitude' => 16.6930,
                 'longitude' => 121.6788,
                 'category' => 'field',
-                'capacity' => 1500,
+
             ],
             [
                 'name' => 'Engineering Lobby',
