@@ -31,6 +31,7 @@ class OrganizationController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
+            'code' => 'required|unique:organizations',
             'department_id' => 'required|exists:departments,id',
             'logo_url' => 'nullable|string',
             'description' => 'nullable|string',

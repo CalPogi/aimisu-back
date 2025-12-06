@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Organization extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['name', 'logo_url', 'description', 'department_id', 'head_user_id'];
+    protected $fillable = ['name','code', 'logo_url', 'description', 'department_id', 'head_user_id'];
 
     public function department(): BelongsTo
     {
