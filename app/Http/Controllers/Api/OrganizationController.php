@@ -8,9 +8,23 @@ use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Organization::with('department')->get();
+        $perPage = $request->integer('per_page', 10);
+
+        $paginator = Organization::with('department')
+            ->orderBy('name')
+            ->paginate($perPage);
+
+        return response()->json([
+            'data' => $paginator->items(),
+            'meta' => [
+                'current_page' => $paginator->currentPage(),
+                'per_page'     => $paginator->perPage(),
+                'total'        => $paginator->total(),
+                'last_page'    => $paginator->lastPage(),
+            ],
+        ]);
     }
 
     public function store(Request $request)
@@ -22,6 +36,7 @@ class OrganizationController extends Controller
             'description' => 'nullable|string',
             'head_user_id' => 'nullable|exists:users,id',
         ]);
+
         return Organization::create($validated);
     }
 
@@ -38,13 +53,16 @@ class OrganizationController extends Controller
             'description' => 'nullable|string',
             'head_user_id' => 'nullable|exists:users,id',
         ]);
+
         $organization->update($validated);
+
         return $organization;
     }
 
     public function destroy(Organization $organization)
     {
         $organization->delete();
+
         return response()->json(['message' => 'Deleted']);
     }
 }

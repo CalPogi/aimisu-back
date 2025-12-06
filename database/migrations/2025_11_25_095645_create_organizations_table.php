@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('head_user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->unique(['name', 'department_id']);

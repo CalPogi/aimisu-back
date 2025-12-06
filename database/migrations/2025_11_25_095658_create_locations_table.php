@@ -15,7 +15,6 @@ return new class extends Migration
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->string('category')->default('other');
-            $table->integer('capacity')->nullable();
             $table->text('description')->nullable();
             $table->json('amenities')->nullable();
             $table->timestamps();

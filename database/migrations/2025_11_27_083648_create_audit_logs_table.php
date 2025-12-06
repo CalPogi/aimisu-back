@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::create('audit_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('table_name', 100);   // e.g. 'users', 'events'
+            $table->string('table_name');
             $table->unsignedBigInteger('record_id');
-            $table->string('action', 20);        // INSERT / UPDATE / DELETE
-            $table->text('details')->nullable(); // simple text description
-            $table->timestamp('created_at')->useCurrent();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('action');
+            $table->timestamps();
 
             $table->index(['table_name', 'record_id']);
-            $table->index('created_at');
+            $table->index('user_id');
         });
     }
 

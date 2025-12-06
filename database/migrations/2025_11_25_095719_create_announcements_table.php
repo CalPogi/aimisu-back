@@ -25,6 +25,7 @@ return new class extends Migration
             $table->json('visible_departments')->nullable();
             $table->integer('views_count')->default(0);
             $table->timestamp('published_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index('organization_id');

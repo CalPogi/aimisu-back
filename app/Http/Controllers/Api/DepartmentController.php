@@ -8,9 +8,21 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Department::all();
+        $perPage = $request->integer('per_page', 10);
+
+        $paginator = Department::orderBy('name')->paginate($perPage);
+
+        return response()->json([
+            'data' => $paginator->items(),
+            'meta' => [
+                'current_page' => $paginator->currentPage(),
+                'per_page'     => $paginator->perPage(),
+                'total'        => $paginator->total(),
+                'last_page'    => $paginator->lastPage(),
+            ],
+        ]);
     }
 
     public function store(Request $request)
@@ -21,6 +33,7 @@ class DepartmentController extends Controller
             'logo_url' => 'nullable|string',
             'description' => 'nullable|string',
         ]);
+
         return Department::create($validated);
     }
 
@@ -37,13 +50,16 @@ class DepartmentController extends Controller
             'logo_url' => 'nullable|string',
             'description' => 'nullable|string',
         ]);
+
         $department->update($validated);
+
         return $department;
     }
 
     public function destroy(Department $department)
     {
         $department->delete();
+
         return response()->json(['message' => 'Deleted']);
     }
 }
