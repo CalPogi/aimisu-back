@@ -16,10 +16,18 @@ class UserSeeder extends Seeder
         $cas = Department::where('code', 'CAS')->first();
 
         $acm = Organization::where('name', 'ACM Student Chapter')->first()
-            ?? Organization::create(['name' => 'ACM Student Chapter', 'department_id' => $coe?->id]);
+            ?? Organization::create([
+                'name' => 'ACM Student Chapter',
+                'code' => 'ACM',
+                'department_id' => $coe?->id
+            ]);
 
         $ieee = Organization::where('name', 'IEEE Student Branch')->first()
-            ?? Organization::create(['name' => 'IEEE Student Branch', 'department_id' => $coe?->id]);
+            ?? Organization::create([
+                'name' => 'IEEE Student Branch',
+                'code' => 'IEEE',
+                'department_id' => $coe?->id
+            ]);
 
         $ssc = Organization::where('name', 'Supreme Student Council')->first();
         $englishClub = Organization::where('name', 'English Club')->first();
