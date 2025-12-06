@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code', 50);
             $table->string('logo_url')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
