@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/admin/analytics/events', [AdminController::class, 'analyticsEvents']);
         Route::get('/admin/analytics/departments', [AdminController::class, 'analyticsDepartments']);
 
-        Route::apiResource('departments', DepartmentController::class);
+        Route::apiResource('departments', DepartmentController::class)->except(['index']);
         Route::apiResource('organizations', OrganizationController::class);
         Route::apiResource('locations', LocationController::class);
         Route::apiResource('users', UserController::class);
